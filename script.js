@@ -14,6 +14,11 @@
     var p = clamp(y / h, 0, 1);
     if (!reduce) hero.style.setProperty('--p', p.toFixed(4));
     nav.classList.toggle('solid', y > h * 0.6);
+    if (y < h * 0.4) {
+      tabLinks.forEach(function (a) { a.classList.remove('active'); });
+      var tl = document.getElementById('tabs');
+      if (tl.scrollLeft > 0) tl.scrollLeft = 0;
+    }
     var nearQuote = quote.getBoundingClientRect().top < h * 0.8;
     dock.classList.toggle('show', y > h * 0.75 && !nearQuote);
     if (!reduce && mobilePhoto) {
